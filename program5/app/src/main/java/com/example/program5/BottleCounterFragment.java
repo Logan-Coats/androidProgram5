@@ -91,7 +91,14 @@ public class BottleCounterFragment extends Fragment {
                 //call dec method
                 boolean dec = mainActivityViewModel.decCurrent();
                 if(!dec){
-                    Toast.makeText(getActivity(), "Min capacity reached!",Toast.LENGTH_LONG).show();
+                    Log.d("TAG",getActivity().getLocalClassName());
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(getActivity(), "Min Capacity Reached!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                   //Toast.makeText(getActivity().getApplicationContext(), "Min capacity reached!",Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -76,7 +76,10 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 EditText maxET = v.findViewById(R.id.maxET);
-                mainActivityViewModel.changeMax(Integer.parseInt(maxET.getText().toString()));
+                if(!maxET.getText().toString().equals("")){
+                    mainActivityViewModel.changeMax(Integer.parseInt(maxET.getText().toString()));
+                }
+
             }
         });
 
@@ -85,7 +88,9 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 EditText minET = v.findViewById(R.id.minET);
-                mainActivityViewModel.changeMin(Integer.parseInt(minET.getText().toString()));
+                if(!minET.getText().toString().equals("")){
+                    mainActivityViewModel.changeMin(Integer.parseInt(minET.getText().toString()));
+                }
             }
         });
         return v;
